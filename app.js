@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import currencyRoutes from './routes/currencyRoutes.js';
+import * as path from "path";
 
 const app = express();
 dotenv.config();
@@ -23,3 +24,6 @@ mongoose.connect(process.env.MONGO_URI, {
         process.exit(1)
     });
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join('index.html'));
+});
