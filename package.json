@@ -10,7 +10,7 @@
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" ",
     "update_banks": "node scraper/scraper.js",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION = false npm install --prefix client && npm run build --prefix"
   },
   "author": "g.bagiryan",
   "license": "ISC",
