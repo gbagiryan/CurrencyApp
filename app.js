@@ -8,6 +8,9 @@ const app = express();
 dotenv.config();
 const PORT = process.env.PORT;
 
+const publicPath = path.join(__dirname, '..', 'public');
+app.use(express.static(publicPath));
+
 app.use('/api/currencies', currencyRoutes);
 
 mongoose.connect(process.env.MONGO_URI, {
@@ -24,7 +27,7 @@ mongoose.connect(process.env.MONGO_URI, {
         process.exit(1)
     });
 
-const publicPath = path.join(__dirname, '..', 'public');
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html'));
 });
