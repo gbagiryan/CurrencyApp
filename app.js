@@ -24,6 +24,7 @@ mongoose.connect(process.env.MONGO_URI, {
         process.exit(1)
     });
 
+const publicPath = path.join(__dirname, '..', 'public');
 app.get('*', (req, res) => {
-    res.sendFile(path.join('index.html'));
+    res.sendFile(path.join(publicPath, 'index.html'));
 });
